@@ -4,9 +4,9 @@ Donate link: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugi
 Author URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Plugin URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Tags:  poll, plugin, wordpress, widget
-Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 5.0
+Requires at least: 3.4
+Tested up to: 3.6
+Stable tag: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -21,7 +21,7 @@ Check official website for live demo [http://www.gopiplus.com/work/2012/03/19/po
 *   [Comments/Suggestion](http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/)			
 *   [About author](http://www.gopiplus.com/work/)				
 
-Poll one wp plug-in is simple Ajax based pool plug-in for WordPress. using this plug-in we can customize the pool in the website widget. In the admin we have option to create the pool with maximum six answer. also have option to set start and end date of the pool. In the front end it will display one pool at a time also we can set random pool display.
+Poll one wp plug-in is simple Ajax based poll plug-in for WordPress. using this plug-in we can customize the pool in the website widget. In the admin we have option to create the pool with maximum six answer. also have option to set start and end date of the pool. In the front end it will display one pool at a time also we can set random pool display.
 
 In the front end, after user selected and submitted the answer, it will display the answer for that pool. The live demo available on the sidebar, please submit your answer and see the demo and output.
 
@@ -79,6 +79,13 @@ New admin menu.
 
 New demo link, www.gopiplus.com
 
+= 6.0 =
+
+Permissions issue fixed
+Tested up to 3.6
+New admin layout
+Added security feature.
+
 == Changelog ==
 
 = 1.0 =
@@ -102,3 +109,10 @@ New admin menu.
 = 5.0 =
 
 New demo link, www.gopiplus.com
+
+= 6.0 =
+
+Permissions issue fixed
+Tested up to 3.6
+New admin layout
+Added security feature.

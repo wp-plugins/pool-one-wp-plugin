@@ -5,7 +5,7 @@ Plugin Name: Poll one wp plugin
 Plugin URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Description: Poll one wp plug-in is simple Ajax based pool plug-in for WordPress. using this plug-in we can customize the pool in the website widget.
 Author: Gopi.R
-Version: 5.0
+Version: 6.0
 Author URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Donate link: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Tags: poll, plugin, wordpress, widget
@@ -14,6 +14,10 @@ Tags: poll, plugin, wordpress, widget
 global $wpdb, $wp_version;
 define("POOLONETABLEQ", $wpdb->prefix . "pooloneq_wp_plugin");
 define("POOLONETABLEA", $wpdb->prefix . "poolonea_wp_plugin");
+define("WP_po1lone_UNIQUE_NAME", "po1lone");
+define("WP_po1lone_TITLE", "Poll one");
+define('WP_po1lone_FAV', 'http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/');
+define('WP_po1lone_LINK', 'Check official website for more information <a target="_blank" href="'.WP_po1lone_FAV.'">click here</a>');
 
 if ( ! defined( 'POOLONE_PLUGIN_BASENAME' ) )
 	define( 'POOLONE_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
@@ -64,7 +68,7 @@ function poolone()
 			foreach ( $pool_question as $question ) 
 			{
 				$poolq_id = $question->poolq_id;
-				$poolq_question = $question->poolq_question;
+				$poolq_question = stripslashes($question->poolq_question);
 				$poolq_question = str_replace( "##QUESTION##" , $poolq_question, $pool1_que_css);
 				$res = $res . $poolq_question;
 				$sSql = "select poola_id, poola_answer, poola_vote from ". POOLONETABLEA ." where 1=1 and poolq_id = ". $poolq_id;
@@ -74,7 +78,7 @@ function poolone()
 					foreach ( $pool_answer as $answer ) 
 					{
 						$poola_id = $answer->poola_id;
-						$poola_answer = $answer->poola_answer;
+						$poola_answer = stripslashes($answer->poola_answer);
 						$poola_vote = $answer->poola_vote;
 						$poola_answer = str_replace( "##ANSWER##" , $poola_answer, $pool1_ans_css);
 						$poola_answer = str_replace( "##RES##" , $poola_vote, $poola_answer);
@@ -102,7 +106,7 @@ function poolone()
 					foreach ( $pool_answer as $answer ) 
 					{
 						$poola_id = $answer->poola_id;
-						$poola_answer = $answer->poola_answer;
+						$poola_answer = stripslashes($answer->poola_answer);
 						$poola_answer = "<input type ='Radio' onClick='SetPool(".$poola_id.")' name = 'poolanswer' id = 'poolanswer' value= '".$poola_id."'> ".$poola_answer."<br />";
 						$poola_answer = str_replace( "##ANSWER##" , $poola_answer, $pool1_ans_css);
 						echo $poola_answer;
@@ -139,6 +143,7 @@ function pool1_shortcode( $atts )
 	}
 	$id = $atts['id'];
 	
+	$poll = "";
 	$pool_random = "YES";
 	$sSql = "select poolq_id, poolq_question from ". POOLONETABLEQ ." where 1=1";
 	$sSql = $sSql . " and (`poolq_start` <= NOW() and `poolq_end` >= NOW())";
@@ -162,7 +167,7 @@ function pool1_shortcode( $atts )
 			foreach ( $pool_question as $question ) 
 			{
 				$poolq_id = $question->poolq_id;
-				$poolq_question = $question->poolq_question;
+				$poolq_question = stripslashes($question->poolq_question);
 				$poolq_question = str_replace( "##QUESTION##" , $poolq_question, $pool1_que_css);
 				$res = $res . $poolq_question;
 				$sSql = "select poola_id, poola_answer, poola_vote from ". POOLONETABLEA ." where 1=1 and poolq_id = ". $poolq_id;
@@ -172,7 +177,7 @@ function pool1_shortcode( $atts )
 					foreach ( $pool_answer as $answer ) 
 					{
 						$poola_id = $answer->poola_id;
-						$poola_answer = $answer->poola_answer;
+						$poola_answer = stripslashes($answer->poola_answer);
 						$poola_vote = $answer->poola_vote;
 						$poola_answer = str_replace( "##ANSWER##" , $poola_answer, $pool1_ans_css);
 						$poola_answer = str_replace( "##RES##" , $poola_vote, $poola_answer);
@@ -190,7 +195,7 @@ function pool1_shortcode( $atts )
 			{
 				$poll = $poll . '<div id="pool1_page"><span id="pool1_msg_page" style="padding-top:5px;padding-left:10px;color:#FF0000;"></span><br />';
 				$poolq_id = $question->poolq_id;
-				$poolq_question = $question->poolq_question;
+				$poolq_question = stripslashes($question->poolq_question);
 				$poolq_question = str_replace( "##QUESTION##" , $poolq_question, $pool1_que_css);
 				$poll = $poll.$poolq_question;
 				$sSql = "select poola_id, poola_answer from ". POOLONETABLEA ." where 1=1 and poolq_id = ". $poolq_id;
@@ -200,7 +205,7 @@ function pool1_shortcode( $atts )
 					foreach ( $pool_answer as $answer ) 
 					{
 						$poola_id = $answer->poola_id;
-						$poola_answer = $answer->poola_answer;
+						$poola_answer = stripslashes($answer->poola_answer);
 						$poola_answer = "<input type ='Radio' onClick='SetPool_page(".$poola_id.")' name = 'poolanswer' id = 'poolanswer' value= '".$poola_id."'> ".$poola_answer."<br />";
 						$poola_answer = str_replace( "##ANSWER##" , $poola_answer, $pool1_ans_css);
 						$poll = $poll.$poola_answer;
@@ -286,69 +291,34 @@ function pool1_install()
 
 function pool1_admin_options() 
 {
-	include_once("pool-management.php");
+	global $wpdb;
+	$current_page = isset($_GET['ac']) ? $_GET['ac'] : '';
+	switch($current_page)
+	{
+		case 'edit':
+			include('pages/content-management-edit.php');
+			break;
+		case 'add':
+			include('pages/content-management-add.php');
+			break;
+		case 'ans':
+			include('pages/content-management-ans.php');
+			break;
+		default:
+			include('pages/content-management-show.php');
+			break;
+	}
 }
 
 function pool1_page_setting() 
 {
-	
-	$pool1_que_css_page = htmlspecialchars(get_option('pool1_que_css_page'));
-	$pool1_ans_css_page = htmlspecialchars(get_option('pool1_ans_css_page'));
-	$pool1_btn_css_page = htmlspecialchars(get_option('pool1_btn_css_page'));
-	$pool1_que_css_res_page = htmlspecialchars(get_option('pool1_que_css_res_page'));
-	$pool1_ans_css_res_page = htmlspecialchars(get_option('pool1_ans_css_res_page'));
-	
-	if (@$_POST['pool1_que_css_page']) 
-	{
-		$pool1_que_css_page = stripslashes($_POST['pool1_que_css_page']);
-		$pool1_ans_css_page = stripslashes($_POST['pool1_ans_css_page']);
-		$pool1_btn_css_page = stripslashes($_POST['pool1_btn_css_page']);
-		$pool1_que_css_res_page = stripslashes($_POST['pool1_que_css_res_page']);
-		$pool1_ans_css_res_page = stripslashes($_POST['pool1_ans_css_res_page']);
-		
-		update_option('pool1_que_css_page', $pool1_que_css_page );
-		update_option('pool1_ans_css_page', $pool1_ans_css_page );
-		update_option('pool1_btn_css_page', $pool1_btn_css_page );
-		update_option('pool1_que_css_res_page', $pool1_que_css_res_page );
-		update_option('pool1_ans_css_res_page', $pool1_ans_css_res_page );
-		
-		$pool1_que_css_page = htmlspecialchars($pool1_que_css_page);
-		$pool1_ans_css_page = htmlspecialchars($pool1_ans_css_page);
-		$pool1_btn_css_page = htmlspecialchars($pool1_btn_css_page);
-		$pool1_que_css_res_page = htmlspecialchars($pool1_que_css_res_page);
-		$pool1_ans_css_res_page = htmlspecialchars($pool1_ans_css_res_page);
-	}
-	
-	echo '<div class="wrap">';
-	echo '<h2>Poll one page settings</h2>';
-	echo '<form name="pool1_form" method="post" action="admin.php?page=pool1_page_setting" onsubmit=""  >';
-	echo '<p>Question CSS:<br><input  style="width: 675px;" type="text" value="';
-	echo $pool1_que_css_page . '" name="pool1_que_css_page" id="pool1_que_css_page" /><br>Keyword: ##QUESTION##</p>';
-	
-	echo '<p>Answer CSS:<br><input  style="width: 675px;" type="text" value="';
-	echo $pool1_ans_css_page . '" name="pool1_ans_css_page" id="pool1_ans_css_page" /><br>Keyword: ##ANSWER##</p>';
-	
-	echo '<p>Button CSS:<br><input  style="width: 675px;" type="text" value="';
-	echo $pool1_btn_css_page . '" name="pool1_btn_css_page" id="pool1_btn_css_page" /><br>Keyword: ##BUTTON##</p>';
-	
-	echo '<p>Question CSS result box:<br><input  style="width: 675px;" type="text" value="';
-	echo $pool1_que_css_res_page . '" name="pool1_que_css_res_page" id="pool1_que_css_res_page" /><br>Keyword: ##QUESTION##</p>';
-	
-	echo '<p>Answer CSS result box:<br><input  style="width: 675px;" type="text" value="';
-	echo $pool1_ans_css_res_page . '" name="pool1_ans_css_res_page" id="pool1_ans_css_res_page" /><br>Keyword: ##ANSWER##, ##RES##</p>';
-
-	echo '<input name="publish" lang="publish" class="button-primary" value="Update Settings" type="submit" />';
-	
-	echo "<br /><br />Note: Check official website for more information ";
-	echo "<a target='_blank' href='http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/'>Click here</a></span> ";
-	echo '</form>';
-	echo '</div>';
-
+	global $wpdb;
+	include_once("setting.php");
 }
 
 function pool1_deactivation() 
 {
-
+	// No action required.
 }
 
 function pool1_add_javascript_files() 
@@ -365,8 +335,8 @@ function pool1_add_to_menu()
 	if (is_admin()) 
 	{
 		add_menu_page( __( 'Poll one', 'PollOne' ), __( 'Poll one', 'PollOne' ), 'administrator', 'PollOne', 'pool1_admin_options' );
-		add_submenu_page( 'PollOne', __( 'Questions', 'PollOne' ), __( 'Questions admin', 'PollOne' ),'administrator', 'PollOne', 'pool1_admin_options' );
-		add_submenu_page( 'PollOne', __( 'Page setting', 'PollOne' ), __( 'Page setting', 'PollOne' ),'administrator', 'pool1_page_setting', 'pool1_page_setting' );
+		add_submenu_page( 'PollOne', __( 'Poll One questions', 'PollOne' ), __( 'Poll Questions', 'PollOne' ),'administrator', 'PollOne', 'pool1_admin_options' );
+		add_submenu_page( 'PollOne', __( 'Poll One page setting', 'PollOne' ), __( 'Page Settings', 'PollOne' ),'administrator', 'PollOneSetting', 'pool1_page_setting' );
 	}
 }
 
@@ -430,8 +400,7 @@ function pool1_control()
 	echo '<p>Answer CSS result box:<br><input  style="width: 675px;" type="text" value="';
 	echo $pool1_ans_css_res . '" name="pool1_ans_css_res" id="pool1_ans_css_res" /><br>Keyword: ##ANSWER##, ##RES##</p>';
 
-	echo "<span style='color:#990000;'>Check official website for more information ";
-	echo "<a target='_blank' href='http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/'>Click here</a></span> ";
+	echo WP_po1lone_LINK;
 
 	echo '<input type="hidden" id="pool1_submit" name="pool1_submit" value="1" />';
 }

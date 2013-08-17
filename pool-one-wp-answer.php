@@ -35,7 +35,7 @@ if ( !empty($pool_question) )
 			foreach ( $pool_answer as $answer ) 
 			{
 				$poola_id = $answer->poola_id;
-				$poola_answer = $answer->poola_answer;
+				$poola_answer = stripslashes($answer->poola_answer);
 				$poola_vote = $answer->poola_vote;
 				$poola_answer = str_replace( "##ANSWER##" , $poola_answer, $pool1_ans_css);
 				$poola_answer = str_replace( "##RES##" , $poola_vote, $poola_answer);

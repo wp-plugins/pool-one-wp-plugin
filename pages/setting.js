@@ -70,16 +70,21 @@ function pool1_submit()
 	document.pool1_form.pool1_tot.value = tot;
 }
 
-function pool1_delete(id)
+function poolq_delete(id)
 {
 	if(confirm("Do you want to delete this record?"))
 	{
-		document.frm_pool1_display.action="options-general.php?page=pool-one-wp-plugin/pool-one-wp-plugin.php&AC=DEL&DID="+id;
-		document.frm_pool1_display.submit();
+		document.frm_poolq_display.action="admin.php?page=PollOne&ac=del&did="+id;
+		document.frm_poolq_display.submit();
 	}
 }	
 
-function pool1_redirect()
+function poolq_redirect()
 {
-	window.location = "options-general.php?page=pool-one-wp-plugin/pool-one-wp-plugin.php";
+	window.location = "admin.php?page=PollOne";
+}
+
+function poolq_help()
+{
+	window.open("http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/");
 }
