@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin
 Plugin URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Tags:  poll, plugin, wordpress, widget
 Requires at least: 3.4
-Tested up to: 3.6
-Stable tag: 6.0
+Tested up to: 3.8
+Stable tag: 6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -86,6 +86,12 @@ Tested up to 3.6
 New admin layout
 Added security feature.
 
+= 6.1 =
+
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (poll-one.po) available in the languages folder.
+
 == Changelog ==
 
 = 1.0 =
@@ -116,3 +122,9 @@ Permissions issue fixed
 Tested up to 3.6
 New admin layout
 Added security feature.
+
+= 6.1 =
+
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (poll-one.po) available in the languages folder.

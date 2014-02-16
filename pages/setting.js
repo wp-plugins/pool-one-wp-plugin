@@ -1,6 +1,6 @@
 /**
  *     Poll one wp plugin
- *     Copyright (C) 2012  www.gopiplus.com
+ *     Copyright (C) 2011 - 2014  www.gopiplus.com
  *	   http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
  * 
  *     This program is free software: you can redistribute it and/or modify

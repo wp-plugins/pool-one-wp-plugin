@@ -18,7 +18,7 @@ if (isset($_POST['frm_poolq_display']) && $_POST['frm_poolq_display'] == 'yes')
 	
 	if ($result != '1')
 	{
-		?><div class="error fade"><p><strong>Oops, selected details doesn't exist (1).</strong></p></div><?php
+		?><div class="error fade"><p><strong><?php _e('Oops, selected details doesnt exist.', 'poll-one'); ?></strong></p></div><?php
 	}
 	else
 	{
@@ -42,7 +42,7 @@ if (isset($_POST['frm_poolq_display']) && $_POST['frm_poolq_display'] == 'yes')
 			
 			//	Set success message
 			$poolq_success_msg = TRUE;
-			$poolq_success = __('Selected record was successfully deleted.', WP_po1lone_UNIQUE_NAME);
+			$poolq_success = __('Selected record was successfully deleted.', 'poll-one');
 		}
 	}
 	
@@ -72,7 +72,7 @@ function LoadAnswer($qid)
 ?>
 <div class="wrap">
   <div id="icon-edit" class="icon32 icon32-posts-post"></div>
-    <h2><?php echo WP_po1lone_TITLE; ?><a class="add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/admin.php?page=PollOne&ac=add">Add New</a></h2>
+    <h2><?php _e('Poll one', 'poll-one'); ?><a class="add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/admin.php?page=PollOne&ac=add"><?php _e('Add New', 'poll-one'); ?></a></h2>
     <div class="tool-box">
 	<?php
 		$sSql = "SELECT * FROM `".POOLONETABLEQ."` order by poolq_id desc";
@@ -85,21 +85,21 @@ function LoadAnswer($qid)
         <thead>
           <tr>
             <th class="check-column" scope="col"><input type="checkbox" name="poolq_group_item[]" /></th>
-			<th scope="col">Id</th>
-			<th scope="col">Poll questions</th>
-			<th scope="col">Start date</th>
-			<th scope="col">End date</th>
-			<th scope="col">Action</th>
+			<th scope="col"><?php _e('Id', 'poll-one'); ?></th>
+			<th scope="col"><?php _e('Poll questions', 'poll-one'); ?></th>
+			<th scope="col"><?php _e('Start date', 'poll-one'); ?></th>
+			<th scope="col"><?php _e('End date', 'poll-one'); ?></th>
+			<th scope="col"><?php _e('Action', 'poll-one'); ?></th>
           </tr>
         </thead>
 		<tfoot>
           <tr>
             <th class="check-column" scope="col"><input type="checkbox" name="poolq_group_item[]" /></th>
-			<th scope="col">Id</th>
-			<th scope="col">Poll questions</th>
-			<th scope="col">Start date</th>
-			<th scope="col">End date</th>
-			<th scope="col">Action</th>
+			<th scope="col"><?php _e('Id', 'poll-one'); ?></th>
+			<th scope="col"><?php _e('Poll questions', 'poll-one'); ?></th>
+			<th scope="col"><?php _e('Start date', 'poll-one'); ?></th>
+			<th scope="col"><?php _e('End date', 'poll-one'); ?></th>
+			<th scope="col"><?php _e('Action', 'poll-one'); ?></th>
           </tr>
         </tfoot>
 		<tbody>
@@ -132,9 +132,9 @@ function LoadAnswer($qid)
 						<td><?php echo substr($data['poolq_end'],0,10); ?></td>
 						<td>
 						<div class="row-actions">
-							<span class="edit"><a title="Edit Question" href="<?php echo get_option('siteurl'); ?>/wp-admin/admin.php?page=PollOne&amp;ac=edit&amp;did=<?php echo $data['poolq_id']; ?>">Edit Question</a> | </span>
-							<span class="edit"><a title="Edit Answer" href="<?php echo get_option('siteurl'); ?>/wp-admin/admin.php?page=PollOne&amp;ac=ans&amp;did=<?php echo $data['poolq_id']; ?>">Edit Answer</a> | </span>
-							<span class="trash"><a title="Delete" onClick="javascript:poolq_delete('<?php echo $data['poolq_id']; ?>')" href="javascript:void(0);">Delete</a></span> 
+							<span class="edit"><a title="Edit Question" href="<?php echo get_option('siteurl'); ?>/wp-admin/admin.php?page=PollOne&amp;ac=edit&amp;did=<?php echo $data['poolq_id']; ?>"><?php _e('Edit Question', 'poll-one'); ?></a> | </span>
+							<span class="edit"><a title="Edit Answer" href="<?php echo get_option('siteurl'); ?>/wp-admin/admin.php?page=PollOne&amp;ac=ans&amp;did=<?php echo $data['poolq_id']; ?>"><?php _e('Edit Answer', 'poll-one'); ?></a> | </span>
+							<span class="trash"><a title="Delete" onClick="javascript:poolq_delete('<?php echo $data['poolq_id']; ?>')" href="javascript:void(0);"><?php _e('Delete', 'poll-one'); ?></a></span> 
 						</div>
 						</td>
 					</tr>
@@ -144,7 +144,7 @@ function LoadAnswer($qid)
 			}
 			else
 			{
-				?><tr><td colspan="6" align="center">No records available.</td></tr><?php 
+				?><tr><td colspan="6" align="center"><?php _e('No records available.', 'poll-one'); ?></td></tr><?php 
 			}
 			?>
 		</tbody>
@@ -154,16 +154,19 @@ function LoadAnswer($qid)
       </form>	
 	  <div class="tablenav">
 	  <h2>
-	  <a class="button add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/admin.php?page=PollOne&amp;ac=add">Add New</a>
-	  <a class="button add-new-h2" target="_blank" href="<?php echo WP_po1lone_FAV; ?>">Help</a>
+	  <a class="button add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/admin.php?page=PollOne&amp;ac=add"><?php _e('Add New', 'poll-one'); ?></a>
+	  <a class="button add-new-h2" target="_blank" href="<?php echo WP_po1lone_FAV; ?>"><?php _e('Help', 'poll-one'); ?></a>
 	  </h2>
 	  </div>
 	  <div style="height:5px"></div>
-	<h3>Plugin configuration option</h3>
+	<h3><?php _e('Plugin configuration option', 'poll-one'); ?></h3>
 	<ol>
-		<li>Add directly in to the theme using PHP code.</li>
-		<li>Drag and drop the widget to your sidebar.</li>
+		<li><?php _e('Add directly in to the theme using PHP code.', 'poll-one'); ?></li>
+		<li><?php _e('Drag and drop the widget to your sidebar.', 'poll-one'); ?></li>
 	</ol>
-	<p class="description"><?php echo WP_po1lone_LINK; ?></p>
+	<p class="description">
+		<?php _e('Check official website for more information', 'poll-one'); ?>
+		<a target="_blank" href="<?php echo WP_po1lone_FAV; ?>"><?php _e('click here', 'poll-one'); ?></a>
+	</p>
 	</div>
 </div>

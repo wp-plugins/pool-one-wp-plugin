@@ -1,11 +1,10 @@
 <?php
-
 /*
 Plugin Name: Poll one wp plugin
 Plugin URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
-Description: Poll one wp plug-in is simple Ajax based pool plug-in for WordPress. using this plug-in we can customize the pool in the website widget.
+Description: Poll one wp plug-in is simple Ajax based poll plug-in for WordPress. using this plug-in we can customize the poll in the website widget.
 Author: Gopi.R
-Version: 6.0
+Version: 6.1
 Author URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Donate link: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Tags: poll, plugin, wordpress, widget
@@ -14,10 +13,7 @@ Tags: poll, plugin, wordpress, widget
 global $wpdb, $wp_version;
 define("POOLONETABLEQ", $wpdb->prefix . "pooloneq_wp_plugin");
 define("POOLONETABLEA", $wpdb->prefix . "poolonea_wp_plugin");
-define("WP_po1lone_UNIQUE_NAME", "po1lone");
-define("WP_po1lone_TITLE", "Poll one");
 define('WP_po1lone_FAV', 'http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/');
-define('WP_po1lone_LINK', 'Check official website for more information <a target="_blank" href="'.WP_po1lone_FAV.'">click here</a>');
 
 if ( ! defined( 'POOLONE_PLUGIN_BASENAME' ) )
 	define( 'POOLONE_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
@@ -123,7 +119,7 @@ function poolone()
 	}
 	else
 	{
-		echo '<div style="text-align:center;">No pool available</div>';
+		echo '<div style="text-align:center;">'.__('No poll available', 'poll-one').'</div>';
 	}
 }
 
@@ -222,7 +218,7 @@ function pool1_shortcode( $atts )
 	}
 	else
 	{
-		$poll = $poll . '<div style="text-align:center;">No poll available</div>';
+		$poll = $poll . '<div style="text-align:center;">'.__('No poll available', 'poll-one').'</div>';
 	}
 	
 	return $poll;
@@ -243,7 +239,7 @@ function pool1_install()
 		$sSql = $sSql . "`poolq_ext2` VARCHAR( 200 ) NOT NULL ,";
 		$sSql = $sSql . "`poolq_ext3` VARCHAR( 200 ) NOT NULL ,";
 		$sSql = $sSql . "PRIMARY KEY ( `poolq_id` )";
-		$sSql = $sSql . ")";
+		$sSql = $sSql . ") ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
 		$wpdb->query($sSql);
 		
 		$sSql = "";
@@ -263,7 +259,7 @@ function pool1_install()
 		$sSql = $sSql . "`poola_ext2` VARCHAR( 200 ) NOT NULL ,";
 		$sSql = $sSql . "`poola_ext3` VARCHAR( 200 ) NOT NULL ,";
 		$sSql = $sSql . "PRIMARY KEY ( `poola_id` )";
-		$sSql = $sSql . ")";
+		$sSql = $sSql . ") ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
 		$wpdb->query($sSql);
 		
 		$sSql = "";
@@ -334,9 +330,9 @@ function pool1_add_to_menu()
 {
 	if (is_admin()) 
 	{
-		add_menu_page( __( 'Poll one', 'PollOne' ), __( 'Poll one', 'PollOne' ), 'administrator', 'PollOne', 'pool1_admin_options' );
-		add_submenu_page( 'PollOne', __( 'Poll One questions', 'PollOne' ), __( 'Poll Questions', 'PollOne' ),'administrator', 'PollOne', 'pool1_admin_options' );
-		add_submenu_page( 'PollOne', __( 'Poll One page setting', 'PollOne' ), __( 'Page Settings', 'PollOne' ),'administrator', 'PollOneSetting', 'pool1_page_setting' );
+		add_menu_page( __( 'Poll one', 'poll-one' ), __( 'Poll one', 'poll-one' ), 'administrator', 'PollOne', 'pool1_admin_options' );
+		add_submenu_page( 'PollOne', __( 'Poll One questions', 'poll-one' ), __( 'Poll Questions', 'poll-one' ),'administrator', 'PollOne', 'pool1_admin_options' );
+		add_submenu_page( 'PollOne', __( 'Poll One page setting', 'poll-one' ), __( 'Page Settings', 'poll-one' ),'administrator', 'PollOneSetting', 'pool1_page_setting' );
 	}
 }
 
@@ -359,7 +355,7 @@ function pool1_control()
 	$pool1_que_css_res = htmlspecialchars(get_option('pool1_que_css_res'));
 	$pool1_ans_css_res = htmlspecialchars(get_option('pool1_ans_css_res'));
 	
-	if (@$_POST['pool1_submit']) 
+	if (isset($_POST['pool1_submit'])) 
 	{
 		$pool1_title = stripslashes($_POST['pool1_title']);
 		$pool1_que_css = stripslashes($_POST['pool1_que_css']);
@@ -382,26 +378,31 @@ function pool1_control()
 		$pool1_ans_css_res = htmlspecialchars($pool1_ans_css_res);
 	}
 	
-	echo '<p>Title:<br><input  style="width: 200px;" type="text" value="';
+	echo '<p>'.__('Title:', 'poll-one').'<br><input  style="width: 200px;" type="text" value="';
 	echo $pool1_title . '" name="pool1_title" id="pool1_title" /></p>';
 	
-	echo '<p>Question CSS:<br><input  style="width: 675px;" type="text" value="';
+	echo '<p>'.__('Question CSS:', 'poll-one').'<br><input  style="width: 675px;" type="text" value="';
 	echo $pool1_que_css . '" name="pool1_que_css" id="pool1_que_css" /><br>Keyword: ##QUESTION##</p>';
 	
-	echo '<p>Answer CSS:<br><input  style="width: 675px;" type="text" value="';
+	echo '<p>'.__('Answer CSS:', 'poll-one').'<br><input  style="width: 675px;" type="text" value="';
 	echo $pool1_ans_css . '" name="pool1_ans_css" id="pool1_ans_css" /><br>Keyword: ##ANSWER##</p>';
 	
-	echo '<p>Button CSS:<br><input  style="width: 675px;" type="text" value="';
+	echo '<p>'.__('Button CSS:', 'poll-one').'<br><input  style="width: 675px;" type="text" value="';
 	echo $pool1_btn_css . '" name="pool1_btn_css" id="pool1_btn_css" /><br>Keyword: ##BUTTON##</p>';
 	
-	echo '<p>Question CSS result box:<br><input  style="width: 675px;" type="text" value="';
+	echo '<p>'.__('Question CSS result box:', 'poll-one').'<br><input  style="width: 675px;" type="text" value="';
 	echo $pool1_que_css_res . '" name="pool1_que_css_res" id="pool1_que_css_res" /><br>Keyword: ##QUESTION##</p>';
 	
-	echo '<p>Answer CSS result box:<br><input  style="width: 675px;" type="text" value="';
+	echo '<p>'.__('Answer CSS result box:', 'poll-one').'<br><input  style="width: 675px;" type="text" value="';
 	echo $pool1_ans_css_res . '" name="pool1_ans_css_res" id="pool1_ans_css_res" /><br>Keyword: ##ANSWER##, ##RES##</p>';
-
-	echo WP_po1lone_LINK;
-
+	
+	?>
+	<p class="description">
+		<?php _e('Check official website for more information', 'poll-one'); ?>
+		<a target="_blank" href="<?php echo WP_po1lone_FAV; ?>"><?php _e('click here', 'poll-one'); ?></a>
+	</p>
+	<?php
+	
 	echo '<input type="hidden" id="pool1_submit" name="pool1_submit" value="1" />';
 }
 
@@ -409,15 +410,21 @@ function pool1_init()
 {
 	if(function_exists('wp_register_sidebar_widget')) 
 	{
-		wp_register_sidebar_widget('Pool one wp plugin', 'Poll one wp plugin', 'pool1_widget');
+		wp_register_sidebar_widget('Poll one wp plugin', __('Poll one wp plugin', 'poll-one'), 'pool1_widget');
 	}
 	
 	if(function_exists('wp_register_widget_control')) 
 	{
-		wp_register_widget_control('Pool one wp plugin', array('Poll one wp plugin', 'widgets'), 'pool1_control', 'width=750');
+		wp_register_widget_control('Poll one wp plugin', array( __('Poll one wp plugin', 'poll-one'), 'widgets'), 'pool1_control', 'width=750');
 	} 
 }
 
+function pool1_textdomain() 
+{
+	  load_plugin_textdomain( 'poll-one', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
+add_action('plugins_loaded', 'pool1_textdomain');
 add_action('admin_menu', 'pool1_add_to_menu');
 add_action("plugins_loaded", "pool1_init");
 register_activation_hook(__FILE__, 'pool1_install');
