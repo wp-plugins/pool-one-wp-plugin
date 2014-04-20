@@ -3,12 +3,14 @@
 Plugin Name: Poll one wp plugin
 Plugin URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Description: Poll one wp plug-in is simple Ajax based poll plug-in for WordPress. using this plug-in we can customize the poll in the website widget.
-Author: Gopi.R
-Version: 6.1
+Author: Gopi Ramasamy
+Version: 6.2
 Author URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Donate link: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Tags: poll, plugin, wordpress, widget
 */
+
+if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
 global $wpdb, $wp_version;
 define("POOLONETABLEQ", $wpdb->prefix . "pooloneq_wp_plugin");
@@ -247,7 +249,7 @@ function pool1_install()
 		$sSql = $IsSql . " VALUES ('Do you like this plugin?', '2012-01-01 00:00:00', '2015-01-01 00:00:00');";
 		$wpdb->query($sSql);
 		
-		$qid = mysql_insert_id();
+		$qid = $wpdb->insert_id;
 		
 		$sSql = "CREATE TABLE IF NOT EXISTS `". POOLONETABLEA . "` (";
 		$sSql = $sSql . "`poola_id` INT NOT NULL AUTO_INCREMENT ,";

@@ -1,3 +1,4 @@
+<?php if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); } ?>
 <div class="wrap">
 <?php
 $poolq_errors = array();
@@ -72,7 +73,7 @@ if (isset($_POST['poolq_form_submit']) && $_POST['poolq_form_submit'] == 'yes')
 		);
 		$wpdb->query($sql);
 		
-		$qid = mysql_insert_id();
+		$qid = $wpdb->insert_id;
 		if($form['pool1_ans1'] <> "")
 		{
 			LoadAnswer($form['pool1_ans1'], $qid);
