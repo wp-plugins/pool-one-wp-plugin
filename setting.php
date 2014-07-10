@@ -40,24 +40,24 @@
 	<form name="vsrp_form" method="post" action="">
 		<h3><?php _e('Page setting (Applicable only for short code)', 'poll-one'); ?></h3>
 		
-		<label for="tag-width"><?php _e('Question CSS', 'poll-one'); ?></label>
-		<input name="pool1_que_css_page" type="text" value="<?php echo $pool1_que_css_page; ?>"  id="pool1_que_css_page" size="100">
+		<label for="tag-width"><?php _e('Question Style', 'poll-one'); ?></label>
+		<input name="pool1_que_css_page" type="text" value="<?php echo $pool1_que_css_page; ?>"  id="pool1_que_css_page" size="70">
 		<p><?php _e('Keyword:', 'poll-one'); ?> ##QUESTION##</p>
 		
-		<label for="tag-width"><?php _e('Answer CSS', 'poll-one'); ?></label>
-		<input name="pool1_ans_css_page" type="text" value="<?php echo $pool1_ans_css_page; ?>"  id="pool1_ans_css_page" size="100">
+		<label for="tag-width"><?php _e('Answer Style', 'poll-one'); ?></label>
+		<input name="pool1_ans_css_page" type="text" value="<?php echo $pool1_ans_css_page; ?>"  id="pool1_ans_css_page" size="70">
 		<p><?php _e('Keyword:', 'poll-one'); ?> ##ANSWER##</p>
 		
-		<label for="tag-width"><?php _e('Button CSS', 'poll-one'); ?></label>
-		<input name="pool1_btn_css_page" type="text" value="<?php echo $pool1_btn_css_page; ?>"  id="pool1_btn_css_page" size="100">
+		<label for="tag-width"><?php _e('Button Style', 'poll-one'); ?></label>
+		<input name="pool1_btn_css_page" type="text" value="<?php echo $pool1_btn_css_page; ?>"  id="pool1_btn_css_page" size="70">
 		<p><?php _e('Keyword:', 'poll-one'); ?> ##BUTTON##</p>
 		
-		<label for="tag-width"><?php _e('Question CSS result box', 'poll-one'); ?></label>
-		<input name="pool1_que_css_res_page" type="text" value="<?php echo $pool1_que_css_res_page; ?>"  id="pool1_que_css_res_page" size="100">
+		<label for="tag-width"><?php _e('Question Style [result box]', 'poll-one'); ?></label>
+		<input name="pool1_que_css_res_page" type="text" value="<?php echo $pool1_que_css_res_page; ?>"  id="pool1_que_css_res_page" size="70">
 		<p><?php _e('Keyword:', 'poll-one'); ?> ##QUESTION##</p>
 		
-		<label for="tag-width"><?php _e('Answer CSS result box', 'poll-one'); ?></label>
-		<input name="pool1_ans_css_res_page" type="text" value="<?php echo $pool1_ans_css_res_page; ?>"  id="pool1_ans_css_res_page" size="100">
+		<label for="tag-width"><?php _e('Answer Style [result box]', 'poll-one'); ?></label>
+		<input name="pool1_ans_css_res_page" type="text" value="<?php echo $pool1_ans_css_res_page; ?>"  id="pool1_ans_css_res_page" size="70">
 		<p><?php _e('Keyword:', 'poll-one'); ?> ##ANSWER##, ##RES##</p>
 		
 		<div style="padding-top:10px;padding-bottom:10px;">

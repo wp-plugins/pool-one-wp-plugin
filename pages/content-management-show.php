@@ -86,7 +86,7 @@ function LoadAnswer($qid)
         <thead>
           <tr>
             <th class="check-column" scope="col"><input type="checkbox" name="poolq_group_item[]" /></th>
-			<th scope="col"><?php _e('Id', 'poll-one'); ?></th>
+			<th scope="col"><?php _e('Short code', 'poll-one'); ?></th>
 			<th scope="col"><?php _e('Poll questions', 'poll-one'); ?></th>
 			<th scope="col"><?php _e('Start date', 'poll-one'); ?></th>
 			<th scope="col"><?php _e('End date', 'poll-one'); ?></th>
@@ -96,7 +96,7 @@ function LoadAnswer($qid)
 		<tfoot>
           <tr>
             <th class="check-column" scope="col"><input type="checkbox" name="poolq_group_item[]" /></th>
-			<th scope="col"><?php _e('Id', 'poll-one'); ?></th>
+			<th scope="col"><?php _e('Short code', 'poll-one'); ?></th>
 			<th scope="col"><?php _e('Poll questions', 'poll-one'); ?></th>
 			<th scope="col"><?php _e('Start date', 'poll-one'); ?></th>
 			<th scope="col"><?php _e('End date', 'poll-one'); ?></th>
@@ -113,7 +113,7 @@ function LoadAnswer($qid)
 					?>
 					<tr class="<?php if ($i&1) { echo'alternate'; } else { echo ''; }?>">
 						<td align="left"><input type="checkbox" value="<?php echo $data['poolq_id']; ?>" name="poolq_group_item[]"></td>
-						<td><?php echo $data['poolq_id']; ?></td>
+						<td>[pollone id="<?php echo $data['poolq_id']; ?>"]</td>
 						<td><?php echo stripslashes($data['poolq_question']); ?>
 						<div style="padding-top:10px;">
 						<?php

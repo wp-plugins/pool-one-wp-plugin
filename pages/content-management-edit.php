@@ -109,7 +109,7 @@ if ($poolq_error_found == FALSE && strlen($poolq_success) > 0)
 	<h3><?php _e('Update details', 'poll-one'); ?></h3>
 	
 	<label for="tag-a"><?php _e('Enter the poll question', 'poll-one'); ?></label>
-	<input name="pool1_qus" type="text" id="pool1_qus" value="<?php echo stripslashes($form['poolq_question']); ?>" size="120" />
+	<input name="pool1_qus" type="text" id="pool1_qus" value="<?php echo stripslashes($form['poolq_question']); ?>" size="100" />
 	<p><?php _e('Please enter your poll question.', 'poll-one'); ?></p>
 	
 	<label for="tag-a"><?php _e('Start date', 'poll-one'); ?></label>

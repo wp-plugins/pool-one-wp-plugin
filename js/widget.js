@@ -1,59 +1,72 @@
-﻿/**
- *     Poll one wp plugin
- *     Copyright (C) 2012 - 2014 www.gopiplus.com
- *	   http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
- * 
- *     This program is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
- * 
- *     This program is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
- * 
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
- 
- 
-var xmlHttp
-function GetXmlHttpObject(handler)
-{ 
-	var objXmlHttp=null
-	if (navigator.userAgent.indexOf("Opera")>=0)
+﻿var http_req = false;
+function PollOnePOSTRequest(url, parameters) 
+{
+	http_req = false;
+	if (window.XMLHttpRequest) 
 	{
-		alert("This page doesn't work in Opera") 
-		return 
-	}
-	if (navigator.userAgent.indexOf("MSIE")>=0)
-	{ 
-		var strName="Msxml2.XMLHTTP"
-		if (navigator.appVersion.indexOf("MSIE 5.5")>=0)
+		http_req = new XMLHttpRequest();
+		if (http_req.overrideMimeType) 
 		{
-			strName="Microsoft.XMLHTTP"
-		} 
-		try
-		{ 
-			objXmlHttp=new ActiveXObject(strName)
-			objXmlHttp.onreadystatechange=handler 
-			return objXmlHttp
-		} 
-		catch(e)
-		{ 
-			alert("Error. Scripting for ActiveX might be disabled") 
-			return 
-		} 
+			http_req.overrideMimeType('text/html');
+		}
 	} 
-	if (navigator.userAgent.indexOf("Mozilla")>=0)
+	else if (window.ActiveXObject) 
 	{
-		objXmlHttp=new XMLHttpRequest()
-		objXmlHttp.onload=handler
-		objXmlHttp.onerror=handler 
-		return objXmlHttp
+		try 
+		{
+			http_req = new ActiveXObject("Msxml2.XMLHTTP");
+		} 
+		catch (e) 
+		{
+			try 
+			{
+				http_req = new ActiveXObject("Microsoft.XMLHTTP");
+			} 
+			catch (e) {}
+		}
 	}
-} 
+	if (!http_req) 
+	{
+		alert('Cannot create XMLHTTP instance');
+		return false;
+	}
+	http_req.onreadystatechange = PollOneContents;
+	http_req.open('POST', url, true);
+	http_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http_req.setRequestHeader("Content-length", parameters.length);
+	http_req.setRequestHeader("Connection", "close");
+	http_req.send(parameters);
+}
+
+function PollOneContents() 
+{
+	//alert(http_req.readyState);
+	//alert(http_req.responseText);
+	if (http_req.readyState == 4) 
+	{
+		if (http_req.status == 200) 
+		{
+			result = http_req.responseText;
+			result = result.trim();
+			if((result == "exs"))
+			{
+				document.getElementById("pool1_msg").innerHTML = "Please try after some time.";
+			}
+			else if((result == "there-was-problem"))
+			{
+				document.getElementById("pool1_msg").innerHTML = "There was a problem with the request.";
+			}
+			else
+			{
+				document.getElementById("pool1").innerHTML = result;
+			}
+		} 
+		else 
+		{
+			alert('There was a problem with the request.');
+		}
+	}
+}
 
 function SetPool(a)
 {
@@ -61,8 +74,7 @@ function SetPool(a)
 	pool1_ans.value = a;
 }
 
-
-function pool1_ajx(siteurl)
+function PollOne_Submit(url) 
 {
 	var ans = document.getElementById("pool1_ans");
 	if( ans.value == "" || ans.value == "0" )
@@ -70,39 +82,10 @@ function pool1_ajx(siteurl)
 		 alert("Please choose an answer.");
 		 return false;  
 	}
-	document.getElementById("pool1_msg").innerHTML="loading...";
-	var date_now=new Date()
-    var mynumber=Math.random()
-	var url=siteurl+"/pool-one-wp-answer.php?ans="+ ans.value + "&timestamp=" + date_now + "&action=" + mynumber;
-    xmlHttp=GetXmlHttpObject(newchanged_ncc)
-    xmlHttp.open("GET", url , true)
-    xmlHttp.send(null)
+	document.getElementById('pool1_msg').innerHTML = "Sending...";
 	
-}
-
-function newchanged_ncc() 
-{ 
-	//alert(xmlHttp.readyState);
-	//alert(xmlHttp.responseText);
-	if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
-	{ 
-		if((xmlHttp.responseText).trim()=="exs")
-		{
-			document.getElementById("pool1_msg").innerHTML="Please try after some time.";
-		}
-		else
-		{
-			document.getElementById("pool1").innerHTML = (xmlHttp.responseText).trim();
-		}
-	} 
-} 
-
-String.prototype.trim = function() {
-	return this.replace(/^\s+|\s+$/g,"");
-}
-String.prototype.ltrim = function() {
-	return this.replace(/^\s+/,"");
-}
-String.prototype.rtrim = function() {
-	return this.replace(/\s+$/,"");
+	var date_now = new Date()
+    var mynumber = Math.random()
+	var str = "ans=" + encodeURI(ans.value) + "&timestamp=" + encodeURI(date_now) + "&action=" + encodeURI(mynumber);
+	PollOnePOSTRequest(url+'/?pollone=poll-submitted', str);
 }

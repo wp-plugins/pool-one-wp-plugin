@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Poll one wp plugin\n"
-"POT-Creation-Date: 2014-04-20 23:00+0800\n"
-"PO-Revision-Date: 2014-04-20 23:00+0800\n"
+"POT-Creation-Date: 2014-07-10 21:05+0800\n"
+"PO-Revision-Date: 2014-07-10 21:05+0800\n"
 "Last-Translator: \n"
 "Language-Team: www.gopiplus.com <www.gopiplus.com>\n"
 "MIME-Version: 1.0\n"
@@ -13,55 +13,55 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../pool-one-wp-plugin.php:124 ../pool-one-wp-plugin.php:223
+#: ../pool-one-wp-plugin.php:129 ../pool-one-wp-plugin.php:234
 msgid "No poll available"
 msgstr ""
 
-#: ../pool-one-wp-plugin.php:335 ../pages/content-management-show.php:76
+#: ../pool-one-wp-plugin.php:347 ../pages/content-management-show.php:76
 msgid "Poll one"
 msgstr ""
 
-#: ../pool-one-wp-plugin.php:336
+#: ../pool-one-wp-plugin.php:348
 msgid "Poll One questions"
 msgstr ""
 
-#: ../pool-one-wp-plugin.php:336
+#: ../pool-one-wp-plugin.php:348
 msgid "Poll Questions"
 msgstr ""
 
-#: ../pool-one-wp-plugin.php:337
+#: ../pool-one-wp-plugin.php:349
 msgid "Poll One page setting"
 msgstr ""
 
-#: ../pool-one-wp-plugin.php:337
+#: ../pool-one-wp-plugin.php:349
 msgid "Page Settings"
 msgstr ""
 
-#: ../pool-one-wp-plugin.php:383
+#: ../pool-one-wp-plugin.php:395
 msgid "Title:"
 msgstr ""
 
-#: ../pool-one-wp-plugin.php:386
-msgid "Question CSS:"
-msgstr ""
-
-#: ../pool-one-wp-plugin.php:389
-msgid "Answer CSS:"
-msgstr ""
-
-#: ../pool-one-wp-plugin.php:392
-msgid "Button CSS:"
-msgstr ""
-
-#: ../pool-one-wp-plugin.php:395
-msgid "Question CSS result box:"
-msgstr ""
-
 #: ../pool-one-wp-plugin.php:398
-msgid "Answer CSS result box:"
+msgid "Question Style:"
 msgstr ""
 
-#: ../pool-one-wp-plugin.php:403 ../setting.php:72
+#: ../pool-one-wp-plugin.php:401
+msgid "Answer Style:"
+msgstr ""
+
+#: ../pool-one-wp-plugin.php:404
+msgid "Button Style:"
+msgstr ""
+
+#: ../pool-one-wp-plugin.php:407
+msgid "Question Style [result box]:"
+msgstr ""
+
+#: ../pool-one-wp-plugin.php:410
+msgid "Answer Style [result box]:"
+msgstr ""
+
+#: ../pool-one-wp-plugin.php:415 ../setting.php:72
 #: ../pages/content-management-add.php:203
 #: ../pages/content-management-ans.php:139
 #: ../pages/content-management-edit.php:134
@@ -69,7 +69,7 @@ msgstr ""
 msgid "Check official website for more information"
 msgstr ""
 
-#: ../pool-one-wp-plugin.php:404 ../setting.php:73
+#: ../pool-one-wp-plugin.php:416 ../setting.php:73
 #: ../pages/content-management-add.php:204
 #: ../pages/content-management-ans.php:140
 #: ../pages/content-management-edit.php:135
@@ -77,7 +77,7 @@ msgstr ""
 msgid "click here"
 msgstr ""
 
-#: ../pool-one-wp-plugin.php:415 ../pool-one-wp-plugin.php:420
+#: ../pool-one-wp-plugin.php:427 ../pool-one-wp-plugin.php:432
 msgid "Poll one wp plugin"
 msgstr ""
 
@@ -96,7 +96,7 @@ msgid "Page setting (Applicable only for short code)"
 msgstr ""
 
 #: ../setting.php:43
-msgid "Question CSS"
+msgid "Question Style"
 msgstr ""
 
 #: ../setting.php:45 ../setting.php:49 ../setting.php:53 ../setting.php:57
@@ -105,19 +105,19 @@ msgid "Keyword:"
 msgstr ""
 
 #: ../setting.php:47
-msgid "Answer CSS"
+msgid "Answer Style"
 msgstr ""
 
 #: ../setting.php:51
-msgid "Button CSS"
+msgid "Button Style"
 msgstr ""
 
 #: ../setting.php:55
-msgid "Question CSS result box"
+msgid "Question Style [result box]"
 msgstr ""
 
 #: ../setting.php:59
-msgid "Answer CSS result box"
+msgid "Answer Style [result box]"
 msgstr ""
 
 #: ../setting.php:64 ../pages/content-management-add.php:195
@@ -287,7 +287,7 @@ msgstr ""
 
 #: ../pages/content-management-show.php:89
 #: ../pages/content-management-show.php:99
-msgid "Id"
+msgid "Short code"
 msgstr ""
 
 #: ../pages/content-management-show.php:90

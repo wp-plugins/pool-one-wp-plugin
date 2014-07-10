@@ -116,7 +116,7 @@ if ($poolq_error_found == FALSE && strlen($poolq_success) > 0)
 		{
 			?>
 			<label for="tag-a">Enter option <?php echo $hidden; ?></label>
-			<input name="pool1_ans<?php echo $hidden; ?>" type="text" id="pool1_ans<?php echo $hidden; ?>" value="<?php echo stripslashes($frm['poola_answer']); ?>" size="120" />
+			<input name="pool1_ans<?php echo $hidden; ?>" type="text" id="pool1_ans<?php echo $hidden; ?>" value="<?php echo stripslashes($frm['poola_answer']); ?>" size="100" />
 			<p>Please enter your poll option. <input name="pool1_ans<?php echo $hidden; ?>_id" id="pool1_ans<?php echo $hidden; ?>_id" type="hidden" value="<?php echo $frm['poola_id']; ?>"></p>
 			<?php
 			$optioncnt = $optioncnt + 1;

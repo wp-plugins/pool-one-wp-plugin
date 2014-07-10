@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin
 Plugin URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Tags:  poll, plugin, wordpress, widget
 Requires at least: 3.4
-Tested up to: 3.9
-Stable tag: 6.2
+Tested up to: 3.9.1
+Stable tag: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -32,12 +32,29 @@ In the front end, after user selected and submitted the answer, it will display 
 * Option to set start date for display
 * Option to set end date for display
 * CSS setting for widget style
+* Cookies option. user can vote only one time
 
-Plug-in configure
+**How to create poll question**
 
-Drag and drop the widget: First install and activate the plugin. After go to admin  widget page under Appearance tab, drag and drop Pool One wp plugin widget into your side bar.
+After activated the plugin, it will create the new menu Poll One in your admin. In that page we have option to add, edit, delete the question and answer information. also start date, end date option available in the same page to set the question display.
 
-Add directly in the theme : First install and activate the plugin. After use this PHP code, <code><?php if (function_exists (poolone)) poolone(); ?></code> to add this plugin to your theme files.
+**Plug-in configure**
+
+Drag and drop the widget: First install and activate the plugin. After go to admin  widget page under Appearance tab, drag and drop Poll One wp plugin widget into your side bar.
+
+Add directly in the theme : First install and activate the plugin. After use this PHP code, <?php if (function_exists (poolone)) poolone(); ?> to add this plugin to your theme files.
+
+Short code for posts and pages: Add the given short code in the posts and pages to display the poll on the post and page.
+
+Short code:
+
+[pollone id="1"]
+
+id = Enter your poll id.
+
+Use below short code to load random poll from the list.
+
+[pollone id=""]
 
 == Installation ==	
 
@@ -97,6 +114,12 @@ Plugin *.po file (poll-one.po) available in the languages folder.
 1. Tested up to 3.9
 2. Added little security feature.
 
+= 7.0 =
+
+1. Major code change then version 6.2
+2. Separate CSS (css/style.css) file to manage question and answer style.
+3. Poll question and answers are embedded  within &lt;ul&gt; and &lt;li&gt; tags
+
 == Changelog ==
 
 = 1.0 =
@@ -138,3 +161,9 @@ Plugin *.po file (poll-one.po) available in the languages folder.
 
 1. Tested up to 3.9
 2. Added little security feature.
+
+= 7.0 =
+
+1. Major code change then version 6.2
+2. Separate CSS (css/style.css) file to manage question and answer style.
+3. Poll question and answers are embedded  within &lt;ul&gt; and &lt;li&gt; tags

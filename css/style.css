@@ -1,0 +1,21 @@
+.poll_main_cls {
+
+}
+.poll_msg_cls {
+	color:#FF0000;
+}
+.poll_question_cls {
+	font-weight:bold;
+	padding-bottom:5px;
+}
+.poll_ans_ul_cls {
+
+}
+.poll_ans_li_cls {
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.pool1_btn_cls {
+	padding-top:5px;
+}	
+
