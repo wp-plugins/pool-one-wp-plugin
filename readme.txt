@@ -5,12 +5,12 @@ Author URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin
 Plugin URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Tags:  poll, plugin, wordpress, widget
 Requires at least: 3.4
-Tested up to: 3.9.1
-Stable tag: 7.0
+Tested up to: 4.0
+Stable tag: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
-Poll one wp plug-in is simple Ajax based pool plug-in for WordPress. using this plug-in we can customize the pool in the website widget.
+Poll one wp plugin is simple Ajax based pool plug-in for WordPress. using this plug-in we can customize the pool in the website widget.
 
 == Description ==
 
@@ -48,13 +48,13 @@ Short code for posts and pages: Add the given short code in the posts and pages 
 
 Short code:
 
-[pollone id="1"]
+`[pollone id="1"]`
 
 id = Enter your poll id.
 
 Use below short code to load random poll from the list.
 
-[pollone id=""]
+`[pollone id=""]`
 
 == Installation ==	
 
@@ -120,6 +120,10 @@ Plugin *.po file (poll-one.po) available in the languages folder.
 2. Separate CSS (css/style.css) file to manage question and answer style.
 3. Poll question and answers are embedded  within &lt;ul&gt; and &lt;li&gt; tags
 
+= 7.1 =
+
+1. Tested up to 4.0
+
 == Changelog ==
 
 = 1.0 =
@@ -167,3 +171,7 @@ Plugin *.po file (poll-one.po) available in the languages folder.
 1. Major code change then version 6.2
 2. Separate CSS (css/style.css) file to manage question and answer style.
 3. Poll question and answers are embedded  within &lt;ul&gt; and &lt;li&gt; tags
+
+= 7.1 =
+
+1. Tested up to 4.0

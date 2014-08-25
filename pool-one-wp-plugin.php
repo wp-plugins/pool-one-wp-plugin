@@ -2,9 +2,9 @@
 /*
 Plugin Name: Poll one wp plugin
 Plugin URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
-Description: Poll one wp plug-in is simple Ajax based poll plug-in for WordPress. using this plug-in we can customize the poll in the website widget.
+Description: Poll one wp plugin is simple Ajax based poll plug-in for WordPress. using this plug-in we can customize the poll in the website widget.
 Author: Gopi Ramasamy
-Version: 7.0
+Version: 7.1
 Author URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Donate link: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Tags: poll, plugin, wordpress
