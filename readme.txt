@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin
 Plugin URI: http://www.gopiplus.com/work/2012/03/19/pool-one-wp-wordpress-plugin/
 Tags:  poll, plugin, wordpress, widget
 Requires at least: 3.4
-Tested up to: 4.0
-Stable tag: 7.1
+Tested up to: 4.1
+Stable tag: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -124,6 +124,10 @@ Plugin *.po file (poll-one.po) available in the languages folder.
 
 1. Tested up to 4.0
 
+= 7.2 =
+
+1. Tested up to 4.1
+
 == Changelog ==
 
 = 1.0 =
@@ -175,3 +179,7 @@ Plugin *.po file (poll-one.po) available in the languages folder.
 = 7.1 =
 
 1. Tested up to 4.0
+
+= 7.2 =
+
+1. Tested up to 4.1
